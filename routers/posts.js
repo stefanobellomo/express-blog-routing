@@ -1,6 +1,5 @@
 const express = require('express')
 const router = express.Router()
-
 const posts = [
   {
     id: 1,
@@ -49,12 +48,21 @@ const posts = [
 
 // index - visualizzare tutti gli elementi
 router.get('/', (req, res) => {
-  res.send('Lista dei post')
+  res.json(posts)
 })
 
 // show - visualizzare l'elemento
 router.get('/:id', (req, res) => {
-  res.send(`Singolo post con id: ${req.params.id}`)
+
+  const id = Number(req.params.id)
+
+  for (let i = 0; i < posts.length; i++) {
+    const post = posts[i];
+    if (post.id === id) {
+      return res.json(post)
+    }
+  }
+
 })
 
 // store - creare un nuovo elemento
