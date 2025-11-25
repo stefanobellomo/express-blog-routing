@@ -1,3 +1,6 @@
+const express = require('express')
+const router = express.Router()
+
 const posts = [
   {
     id: 1,
@@ -44,8 +47,38 @@ const posts = [
   },
 ];
 
-module.exports = posts;
+// index - visualizzare tutti gli elementi
+router.get('/', (req, res) => {
+  res.send('Lista dei post')
+})
 
+// show - visualizzare l'elemento
+router.get('/:id', (req, res) => {
+  res.send(`Singolo post con id: ${req.params.id}`)
+})
+
+// store - creare un nuovo elemento
+router.post('/', (req, res) => {
+  res.send('Create new element')
+})
+
+// update - aggiornare più parti di un elemento o interamente
+router.put('/:id', (req, res) => {
+  res.send(`aggiornare il post con id: ${req.params.id}`)
+})
+
+// modify - modificare una singola parte di un elemento
+router.patch('/:id', (req, res) => {
+  res.send(`aggiornare  qualche elemento del post con id: ${req.params.id}`)
+})
+
+// destroy - eliminare un post
+router.delete('/:id', (req, res) => {
+  res.send(`eliminare il post con id: ${req.params.id}`)
+})
+
+
+module.exports = router;
 
 
 

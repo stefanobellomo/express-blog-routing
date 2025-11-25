@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const postsRouter = require('./routers/posts')
 const PORT = 3001
 
 app.use(express.static('public'))
@@ -15,34 +16,7 @@ app.get('/', (req, res) => {
     res.send('Welcome to my blog')
 })
 
+app.use('/api/posts', postsRouter)
 
 
-// index - visualizzare tutti gli elementi
-app.get('/api/server', (req, res) => {
-    res.send('Lista dei post')
-})
 
-// show - visualizzare l'elemento
-app.get('/api/server/:id', (req, res) => {
-    res.send(`Singolo post con id: ${req.params.id}`)
-})
-
-// store - creare un nuovo elemento
-app.post('/api/server', (req, res) => {
-    res.send('Create new element')
-})
-
-// update - aggiornare più parti di un elemento o interamente
-app.put('/api/server/:id', (req, res) => {
-    res.send(`aggiornare il post con id: ${req.params.id}`)
-})
-
-// modify - modificare una singola parte di un elemento
-app.patch('/api/server/:id', (req, res) => {
-    res.send(`aggiornare  qualche elemento del post con id: ${req.params.id}`)
-})
-
-// destroy - eliminare un post
-app.delete('/api/server/:id', (req, res) => {
-    res.send(`eliminare il post con id: ${req.params.id}`)
-})
