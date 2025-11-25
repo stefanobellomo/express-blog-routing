@@ -54,16 +54,24 @@ router.get('/', (req, res) => {
 // show - visualizzare l'elemento
 router.get('/:id', (req, res) => {
 
-  const id = Number(req.params.id)
-
-  for (let i = 0; i < posts.length; i++) {
-    const post = posts[i];
-    if (post.id === id) {
-      return res.json(post)
-    }
-  }
+  res.json(posts.find(post => Number(req.params.id) === post.id))
 
 })
+
+// CON FIND
+// const singlePost = posts.find((post) => {
+//   if (Number(req.params.id) === post.id) {
+//     return res.json(post)
+//   }
+// })
+
+// CON CICLO FOR
+// for (let i = 0; i < posts.length; i++) {
+//   const post = posts[i];
+//   if (post.id === id) {
+//     return res.json(post)
+//   }
+// }
 
 // store - creare un nuovo elemento
 router.post('/', (req, res) => {
