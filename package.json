@@ -5,8 +5,8 @@
   "main": "blog.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node blog.js",
-    "dev": "node --watch blog.js"
+    "start": "node posts.js",
+    "dev": "node --watch posts.js"
   },
   "keywords": [],
   "author": "",
