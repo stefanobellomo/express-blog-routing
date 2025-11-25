@@ -1,9 +1,3 @@
-const express = require('express')
-const app = express()
-const PORT = 3001
-
-app.use(express.static('public'))
-
 const posts = [
   {
     id: 1,
@@ -51,3 +45,7 @@ const posts = [
 ];
 
 module.exports = posts;
+
+
+
+
