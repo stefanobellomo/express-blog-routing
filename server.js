@@ -10,36 +10,39 @@ app.listen(PORT, () => {
 
 // i percorsi sono intuibili pensando a cosa ci stiamo riferendo in quell'operazione, se vogliamo aggiungere un oggetto lo facciamo nell'array generale quindi solo /posts, se volesimo intervenire sul singolo post con delle modifiche o delete it allora ci riferiamo all'id /posts/:id
 
+// entry point
 app.get('/', (req, res) => {
     res.send('Welcome to my blog')
 })
 
-// visualizzare tutti gli elementi
+
+
+// index - visualizzare tutti gli elementi
 app.get('/api/server', (req, res) => {
-    res.send('Show all post in page')
+    res.send('Lista dei post')
 })
 
-// visualizzare l'elemento
+// show - visualizzare l'elemento
 app.get('/api/server/:id', (req, res) => {
-    res.send('Show THE post')
+    res.send(`Singolo post con id: ${req.params.id}`)
 })
 
-// creare un nuovo elemento
-app.get('/api/server', (req, res) => {
+// store - creare un nuovo elemento
+app.post('/api/server', (req, res) => {
     res.send('Create new element')
 })
 
-// aggiornare più parti di un elemento
-app.get('/api/server/:id', (req, res) => {
-    res.send('Update the server')
+// update - aggiornare più parti di un elemento o interamente
+app.put('/api/server/:id', (req, res) => {
+    res.send(`aggiornare il post con id: ${req.params.id}`)
 })
 
-// modificare una singola parte di un elemento
-app.get('/api/server/:id', (req, res) => {
-    res.send('fix one element of resource')
+// modify - modificare una singola parte di un elemento
+app.patch('/api/server/:id', (req, res) => {
+    res.send(`aggiornare  qualche elemento del post con id: ${req.params.id}`)
 })
 
-// eliminare un post
-app.get('/api/server/:id', (req, res) => {
-    res.send('delete this element')
+// destroy - eliminare un post
+app.delete('/api/server/:id', (req, res) => {
+    res.send(`eliminare il post con id: ${req.params.id}`)
 })
